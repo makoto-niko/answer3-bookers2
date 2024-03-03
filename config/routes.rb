@@ -10,10 +10,12 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index,:show,:edit,:update] do
-  resource :relationships, only: [:create, :destroy]
+   resource :relationships, only: [:create, :destroy]
    get "followings" => "relationship#followings", as: "followings"
    get "follower" => "relationship#followers", as: "followers"
   end 
+  
+  get "/search", to: "search#searchs"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
